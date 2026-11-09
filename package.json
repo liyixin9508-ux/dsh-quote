@@ -1,0 +1,30 @@
+{
+  "name": "dsh-quote",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Quote whole replies or a text selection in DeepSeek Harness conversations; quotes wait in a bubble above the composer and ride along with your next message.",
+  "license": "MIT",
+  "author": "liyixin9508-ux",
+  "repository": { "type": "git", "url": "git+https://github.com/liyixin9508-ux/dsh-quote.git" },
+  "homepage": "https://github.com/liyixin9508-ux/dsh-quote",
+  "keywords": ["dsh", "deepseek-harness", "plugin", "quote", "conversation", "composer"],
+  "engines": { "dsh": ">=0.2.1-rc.5 <0.3.0" },
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js"
+  },
+  "files": ["index.js", "client.js", "cordis.patch.yml", "README.md", "LICENSE"],
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-chat"
+      ]
+    }
+  }
+}
